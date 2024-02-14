@@ -1,5 +1,4 @@
 import logging
-import time
 
 from aiohttp import web
 import aiohttp_cors

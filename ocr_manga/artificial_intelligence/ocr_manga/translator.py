@@ -3,6 +3,8 @@ translator = google_translator()
 import os
 import cv2
 
+# TODO: add semantic translation
+# After each dialogue, summarize it with the above summarized dialogue
 class Translator:
 
     def translateText(self, fileName, textListDict, langCode):

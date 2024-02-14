@@ -1,5 +1,5 @@
 # DS510 Artificial Intelligence
-Computer Vision midterm project DS510 - Team 2
+Team project project DS510 - Team 2
 
 ### OCR AND WHY OCR
 

@@ -11,7 +11,7 @@ from tqdm import tqdm                         #progressbar when run loop
 
 
 class ImageSegmentation:
-
+    '''Image segmentation: Extract the dialogue box from the images'''
 
     ################################image segmentation
     def imgpath2mask(self, imgpath):
