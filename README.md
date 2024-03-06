@@ -66,10 +66,10 @@ python ocr_manga/main.py
 
 Build an image
 ```
-docker build
+docker build -t manga-translation:0.1 .
 ```
 
 To start the project in develop mode, run the following command:
 ```
-docker run --name ocr_container -p 8080:8080
+docker run -d --name manga-translation -p 8080:8080 manga-translation:0.1
 ```

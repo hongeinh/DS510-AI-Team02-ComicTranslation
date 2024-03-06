@@ -55,7 +55,8 @@ class MangaDrawer:
         im=self.drawText(inpaintedFolder+fileName,rect,textListDict_trans[fileName], langCode)
 
         # another translated folder
-        tranFolder= "../../computer-vision-IT4342E-FE/src/components/tmp_images/"
+        # todo tranFolder= "../../computer-vision-IT4342E-FE/src/components/tmp_images/"
+        tranFolder= "../../DS510-AI-Team02-ComicTranslation/src/components/tmp_images/"
         #im.save(tranFolder+fileName)
         im.save(transalatedFolder + fileName)
 

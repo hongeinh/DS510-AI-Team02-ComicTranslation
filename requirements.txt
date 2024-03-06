@@ -9,6 +9,10 @@ opencv_python==4.1.2.30
 funcy==1.15
 aiohttp_cors
 tensorflow==1.15.2
-google_api_python_client==1.12.8
+google_api_python_client==1.12.9
+google-cloud-translate==3.0.0
+# google-cloud-vision==
 Pillow==8.0.1
 PyQt5==5.15.2
+formencode
+# gallery-dl==

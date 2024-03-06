@@ -37,7 +37,8 @@ class OCRMangaHandler:
     #clean up old output folder
     os.system("rm -r -f gallery-dl")
     os.system("rm -r -f executables/tmp_images/")
-    files = glob.glob("../../computer-vision-IT4342E-FE/src/components/tmp_images/*")
+    # todo files = glob.glob("../../computer-vision-IT4342E-FE/src/components/tmp_images/*")
+    files = glob.glob("../../DS510-AI-Team02-ComicTranslation/src/components/tmp_images/*")
     for f in files:
       os.remove(f)
 

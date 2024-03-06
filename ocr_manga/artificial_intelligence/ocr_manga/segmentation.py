@@ -2,8 +2,9 @@ import os
 import sys
 import os
 executablePath=os.path.join(os.getcwd(), "executables/")
-sys.path.append(os.path.join(executablePath, "SickZil-Machine/src"))
+sys.path.append(os.path.join(os.getcwd(), "SickZil-Machine/src"))
 import core
+# from SickZil_Machine.src import core
 import imgio    #for ez img reading and writing 
 import utils.fp as fp
 import cv2
