@@ -1,9 +1,7 @@
-import sys
 import os
 import requests
 import glob                                    #list path
 from tqdm import tqdm                         #progressbar when run loop
-from apiclient.http import MediaFileUpload, MediaIoBaseDownload
 from artificial_intelligence.ocr_manga.segmentation import ImageSegmentation
 from artificial_intelligence.ocr_manga.detector import TextDetector
 from artificial_intelligence.ocr_manga.ocr_file import TextOCR
@@ -112,17 +110,16 @@ class OCRMangaHandler:
 
     print("\nDraw Text")
     drawer = MangaDrawer()
+    file_paths = []
     for i,imgPath in enumerate(tqdm(self.downloadFileList)):
       
       files = drawer.draw(imgPath, self.transalatedFolder, self.inpaintedFolder, self.langCode, rectDict, textListDict_trans)
-
-      res = requests.post("http://164.90.180.95:5001/api/v0/add", files=files)
-
-      print("res: ", res.json())
-
-      self.translated_list.append(res.json()['Hash'])
-
-    return self.translated_list
+      # res = requests.post("http://164.90.180.95:5001/api/v0/add", files=files)
+      # print("res: ", res.json())
+      # self.translated_list.append(res.json()['Hash'])
+      file_paths.append(files)
+    # return self.translated_list
+    return file_paths
 
 # run python class
 # handler = OCRMangaHandler()

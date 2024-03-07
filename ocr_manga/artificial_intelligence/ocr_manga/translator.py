@@ -17,7 +17,10 @@ class Translator:
         for text in textList:
             # use translator lib to translate the text
             # text_trans = translator.translate(text, lang_tgt=langCode,) if len(text)!=0 else "" 
-            text_trans = translator.translate(text, target_language=langCode,) if len(text)!=0 else "" 
+            if len(text) != 0:
+
+                result = translator.translate(text, target_language=langCode,) 
+                textList_trans.append(result.get("translatedText"))
             # store it into the text list to draw back again to the inpained img
-            textList_trans += [text_trans]
+            else: textList_trans += [""]
         return textList_trans

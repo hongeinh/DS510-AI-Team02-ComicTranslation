@@ -1,17 +1,34 @@
 import os
-import cv2
 from PIL import Image, ImageFont, ImageDraw   #draw text
 import textwrap                               #draw text
 
 class MangaDrawer:
 
     #################get font
-    def getFont(self,lang,size=25):
-        fontList=os.popen('fc-list :lang='+lang+' | grep style=Regular').read().split("\n")[:-1]  #load regular style font pathList
-        if len(fontList)==0: fontList=os.popen('fc-list :lang='+self.langCode).read().split("\n")[:-1]   #if no regular style font load remain font pathList
-        fontList=[i.split(":")[0] for i in fontList]              #get only path data from string
-        fontPath=fontList[0]
-        return ImageFont.truetype(fontPath, size)
+    # def getFont(self,lang,size=25):
+    #     fontList=os.popen('fc-list :lang='+lang+' | grep style=Regular').read().split("\n")[:-1]  #load regular style font pathList
+    #     if len(fontList)==0: fontList=os.popen('fc-list :lang='+self.langCode).read().split("\n")[:-1]   #if no regular style font load remain font pathList
+    #     fontList=[i.split(":")[0] for i in fontList]              #get only path data from string
+    #     fontPath=fontList[0]
+    #     return ImageFont.truetype(fontPath, size)
+    def getFont(self, lang, size=25):
+        fontList = os.popen('fc-list :lang=' + lang + ' | grep style=Regular').read().split("\n")[:-1]
+        if len(fontList) == 0:
+            fontList = os.popen('fc-list :lang=' + self.langCode).read().split("\n")[:-1]
+    
+        fontList = [i.split(":")[0] for i in fontList]
+    
+        for font_path in fontList:  # Iterate through font paths
+            try:
+                return ImageFont.truetype(font_path, size)  # Return if successful
+            except OSError:
+                print(f"Error: Invalid font file: {font_path}. Trying next font.")
+    
+        # If all fonts fail, consider a default font or error handling
+        print("Error: No valid fonts found. Using default font or raising an error.")
+        return ImageFont.load_default()  # Example: Use default font
+        # raise Exception("No valid fonts found")  # Example: Raise an error
+
 
     #################draw text
     def drawText(self,imgPath,rect,textList,lang,break_long_words=False):
@@ -61,4 +78,5 @@ class MangaDrawer:
         im.save(transalatedFolder + fileName)
 
         files = {'media': open(transalatedFolder + fileName, 'rb')}
-        return files
+        # return file_path
+        return transalatedFolder + fileName

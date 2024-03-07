@@ -1,7 +1,4 @@
 import logging
-import time
-import re
-import hashlib
 import formencode as fe
 
 from includes.utils import *
@@ -19,15 +16,9 @@ class RouteHandler:
     def __init__(self):
         self.ocr_manga_translator = OCRMangaHandler()
 
-    async def translate(self, request: Request):
-        data = await request.json()
-        print(data.items())
-        fe.variabledecode.variable_decode(data, dict_char='.', list_char='-')
-        print("data srclang: ", data['srclang'])
-        print("data lang: ", data['lang'])
-        print("data url: ", data['url'])
-        print("data ocr: ", data['ocr'])
+    # async def translate(self, request: Request):
+    def translate(self, url, lang, ocr, srclang):
 
-        translated_list = self.ocr_manga_translator.translate(data['url'], data['lang'], data['ocr'], data['srclang'])
-        
-        return success({"status": 200, "translated_list": translated_list})
+        # translated_list = self.ocr_manga_translator.translate(data['url'], data['lang'], data['ocr'], data['srclang'])
+        file_paths = self.ocr_manga_translator.translate(url, lang, ocr, srclang)
+        return file_paths
